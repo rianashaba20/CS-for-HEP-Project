@@ -71,4 +71,10 @@ Inside the containers directory, build the image with the following command (nam
 ```js
 sudo docker build -t imapp25-dev .
 ```
-Then, to get the output in **Build** mode, I tested it locally. I installed Docker, followed the same initial steps as in the beginning in the SSH connection to create the directory and the image. But I also had to install the Dockerfile from the SSH connection window at **Download File** button (here you have to insert your path: /home/<your username>/containers). 
+Then, to get the output in **Build** mode, I tested it locally. I installed Docker, followed the same initial steps as in the beginning in the SSH connection to create the directory and the image. But I also had to install the Dockerfile from the SSH connection window at **Download File** button (here you have to insert your path: /home/<your username>/containers).  
+The commands I used after I connected to the VS Code were simply the following (BUILD MODE):
+```js
+cmake -S . -B build-d -DCMAKE_BUILD_TYPE=Debug
+cmake --build build-d
+./build-d/mandelbrot_par
+```
