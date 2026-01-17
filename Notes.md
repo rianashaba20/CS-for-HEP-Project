@@ -43,3 +43,31 @@ docker images													(You should now see two images: ubuntu and ubuntu_with
 
 docker run -v $HOME/containers/IMAPP25/:/workspace -i -t ubuntu_with_req_packages /bin/bash			(This couples the IMAPP25 folder to a new workspace folder)
 ```
+Next we need to create Dockerfile.
+
+For this, you need to exit the container, and go to the containers directory. Follow the steps below.
+
+```js
+cd /containers
+vim Dockerfile
+```
+Then, you have to write on the text file, simply copy and paste the following:
+```js
+FROM ubuntu:24.04
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt update && DEBIAN_FRONTEND=noninteractive apt install -y \
+		build-essential \
+		g++ \
+		cmake \
+		libsfml-dev \
+		libtbb-dev \
+		git \
+		vim \
+		&& rm -rf /var/lib/apt/lists/*
+WORKDIR /workspace
+CMD ["bash"]
+```
+Inside the containers directory, build the image with the following command (name is imapp25-dev):
+```js
+sudo docker build -t imapp25-dev .
+```
