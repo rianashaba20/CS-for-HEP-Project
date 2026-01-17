@@ -71,3 +71,4 @@ Inside the containers directory, build the image with the following command (nam
 ```js
 sudo docker build -t imapp25-dev .
 ```
+Then, to get the output in **Build** mode, I tested it locally. I installed Docker, followed the same initial steps as in the beginning in the SSH connection to create the directory and the image. But I also had to install the Dockerfile from the SSH connection window at **Download File** button (here you have to insert your path: /home/<your username>/containers). 
