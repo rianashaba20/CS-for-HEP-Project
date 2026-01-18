@@ -48,7 +48,7 @@ Next we need to create Dockerfile.
 For this, you need to exit the container, and go to the containers directory. Follow the steps below.
 
 ```js
-cd /containers
+cd containers/
 vim Dockerfile
 ```
 Then, you have to write on the text file, simply copy and paste the following:
