@@ -142,3 +142,4 @@ Then run the ```mandelbrot_par``` executable in release mode (build-o):
 ```js
 ./build-o/mandelbrot_par
 ```
+To check the output, stay inside the ```workspace``` and simply type ```ls -la```. All should be there.
