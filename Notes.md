@@ -99,4 +99,4 @@ Now we are ready to run the container:
 ```js
 docker run -v $HOME/containers/IMAPP25/:/workspace -i -t imapp25-dev /bin/bash
 ```
-You should see: ```root@28b91510e2f3:/workspace#``
+You should see: ```root@28b91510e2f3:/workspace#```
