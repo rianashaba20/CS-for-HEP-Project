@@ -90,7 +90,7 @@ Then, let's go to the > container directory where we have the > IMAPP25 folder a
 cd containers/IMAPP25
 ls
 ```
-We need to upload our > main_parallel.cpp and >CMakelists.txt to the > IMAPP25 folder. For this one, just click on ==UPLOAD FILE== button. The files will be in the home directory, and you can move them to where we want by following these commands:
+We need to upload our > main_parallel.cpp and > CMakelists.txt to the > IMAPP25 folder. For this one, just click on ==UPLOAD FILE== button. The files will be in the home directory, and you can move them to where we want by following these commands:
 ```js
 mv ~/CMakeLists.txt ~/containers/IMAPP25/
 ~/main_parallel.cpp ~/containers/IMAPP25/
