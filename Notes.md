@@ -114,7 +114,31 @@ Go inside the ```workspace``` in the container as before and simply run the foll
 cmake -S . -B build-o -DCMAKE_BUILD_TYPE=Release
 cmake --build build-o
 ```
-After that we have to create a new Dockerfile for the release mode. Follow the commands:
+After that we have to create a new Dockerfile for the release mode. Go to the ```containers```folder and run the commands:
 ```js
-
+cd containers/
+sudo vim Dockerfile_Release
+```
+The content of the ```Docker_Release``` file you should write is:
+```js
+FROM ubuntu:24.04
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt update && DEBIAN_FRONTEND=noninteractive apt install -y \
+        libtbb12 \
+        libsfml-graphics2.6
+WORKDIR /workspace
+CMD ["bash"]
+```
+Type ```:wq``` to write and quit. Then:
+```js
+sudo docker build -f Dockerfile_Release -t imapp25-release .
+```
+Now we will run the new container ``ìmapp25-release``` and test the compiled program in it.
+To run the new container:
+```js
+docker run -v $HOME/containers/IMAPP25:/workspace -i -t imapp25-release /bin/bash
+```
+Then run the ```mandelbrot_par``` executable in release mode (build-o):
+```js
+./build-o/mandelbrot_par
 ```
