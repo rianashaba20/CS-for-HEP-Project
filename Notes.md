@@ -78,7 +78,7 @@ cmake -S . -B build-d -DCMAKE_BUILD_TYPE=Debug
 cmake --build build-d
 ./build-d/mandelbrot_par
 ```
-## Working the same thing but on the VM SSH connection
+## Working the same thing but on the VM SSH connection 
 First let's check our container:
 ```js
 docker ps			
@@ -100,10 +100,11 @@ Now we are ready to run the container:
 docker run -v $HOME/containers/IMAPP25/:/workspace -i -t imapp25-dev /bin/bash
 ```
 You should see: ```root@28b91510e2f3:/workspace#```
-Run the following commands:
+Run the following commands for **BUILD MODE**:
 ```js
 cmake -S . -B build-d -DCMAKE_BUILD_TYPE=Debug
 cmake --build build-d
 ./build-d/mandelbrot_par
 ```
+If you exit the container by just writing the command ```js exit ```, you can go back to the ```cd containers/IMAPP25```and then ```ls``` to check that the output is now there.
 
