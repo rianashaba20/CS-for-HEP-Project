@@ -85,12 +85,12 @@ docker ps
 docker ps -a 
 ```
 We should see our container's name in there and ID.
-Then, let's go to the > container directory where we have the > IMAPP25 folder and check the content (it should be empty):
+Then, let's go to the ```container directory``` where we have the ```IMAPP25 folder``` and check the content (it should be empty):
 ```js
 cd containers/IMAPP25
 ls
 ```
-We need to upload our > main_parallel.cpp and > CMakelists.txt to the > IMAPP25 folder. For this one, just click on ==UPLOAD FILE== button. The files will be in the home directory, and you can move them to where we want by following these commands:
+We need to upload our ```main_parallel.cpp``` and ```CMakelists.txt``` to the ```IMAPP25``` folder. For this one, just click on ==UPLOAD FILE== button. The files will be in the home directory, and you can move them to where we want by following these commands:
 ```js
 mv ~/CMakeLists.txt ~/containers/IMAPP25/
 ~/main_parallel.cpp ~/containers/IMAPP25/
@@ -99,4 +99,4 @@ Now we are ready to run the container:
 ```js
 docker run -v $HOME/containers/IMAPP25/:/workspace -i -t imapp25-dev /bin/bash
 ```
-You should see: > root@28b91510e2f3:/workspace#
+You should see: ```root@28b91510e2f3:/workspace#``
