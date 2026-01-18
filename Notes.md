@@ -108,3 +108,13 @@ cmake --build build-d
 ```
 If you exit the container by just writing the command ```exit```, you can go back to the ```cd containers/IMAPP25```and then ```ls``` to check that the output is now there.
 
+### Release Mode
+Go inside the ```workspace``` in the container as before and simply run the following commands:
+```js
+cmake -S . -B build-o -DCMAKE_BUILD_TYPE=Release
+cmake --build build-o
+```
+After that we have to create a new Dockerfile for the release mode. Follow the commands:
+```js
+
+```
