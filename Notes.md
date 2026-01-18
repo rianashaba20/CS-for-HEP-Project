@@ -143,3 +143,14 @@ Then run the ```mandelbrot_par``` executable in release mode (build-o):
 ./build-o/mandelbrot_par
 ```
 To check the output, stay inside the ```workspace``` and simply type ```ls -la```. All should be there.
+
+Now exit the container and go back to ```cd containers/IMAPP25```. We will download the files.
+First, make a zip file for the output with the following command:
+```js
+tar -czf output_results.tar.gz * .png results.csv
+```
+Then to download, simply click on ```DOWNLOAD FILE``` by entering the **full path** (which in my case)
+```js
+/home/anashaba20/containers/IMAPP25/output_results.tar.gz
+```
+Download the code file and docker files by simply replacing the name in the full path.
