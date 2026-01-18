@@ -106,5 +106,5 @@ cmake -S . -B build-d -DCMAKE_BUILD_TYPE=Debug
 cmake --build build-d
 ./build-d/mandelbrot_par
 ```
-If you exit the container by just writing the command ```js exit ```, you can go back to the ```cd containers/IMAPP25```and then ```ls``` to check that the output is now there.
+If you exit the container by just writing the command ```exit```, you can go back to the ```cd containers/IMAPP25```and then ```ls``` to check that the output is now there.
 
