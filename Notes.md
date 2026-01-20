@@ -36,12 +36,12 @@ docker run ubuntu /bin/bash -c "apt update; apt -y install g++ cmake libsfml-dev
 docker ps -a													(Take the container ID of the most recent instance)
 
 
-docker commit <the ID you just copied without the brackets> ubuntu_with_req_packages
+docker commit <the ID you just copied without the brackets> imapp25_build
 
 
-docker images													(You should now see two images: ubuntu and ubuntu_with_req_packages)
+docker images													(You should now see two images: ubuntu and imapp25_build)
 
-docker run -v $HOME/containers/IMAPP25/:/workspace -i -t ubuntu_with_req_packages /bin/bash			(This couples the IMAPP25 folder to a new workspace folder)
+docker run -v $HOME/containers/IMAPP25/:/workspace -i -t imapp25_build /bin/bash			(This couples the IMAPP25 folder to a new workspace folder)
 ```
 Next we need to create Dockerfile.
 
@@ -51,7 +51,7 @@ For this, you need to exit the container, and go to the containers directory. Fo
 cd containers/
 vim Dockerfile
 ```
-Then, you have to write on the text file, simply copy and paste the following:
+Then, you have to write on the text file, simply copy and paste the following (To exit, write: ```:wq``` : 
 ```js
 FROM ubuntu:24.04
 ENV DEBIAN_FRONTEND=noninteractive
