@@ -1,0 +1,3 @@
+/workspace/build-d/CMakeFiles/mandelbrot_par.dir
+/workspace/build-d/CMakeFiles/edit_cache.dir
+/workspace/build-d/CMakeFiles/rebuild_cache.dir
