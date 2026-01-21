@@ -72,9 +72,6 @@ sudo mv ~/main_parallel.cpp ~/containers/IMAPP25/
 ```
 
 ## Build Mode
-
-I tested it locally. I installed Docker, followed the same initial steps as in the beginning in the SSH connection to create the directory and the image. But I also had to install the Dockerfile from the SSH connection window at **Download File** button (here you have to insert your path: /home/<your username>/containers).  
-
 Inside the container and ```/workspace``` type the commands (BUILD MODE):
 ```js
 cmake -S . -B build-d -DCMAKE_BUILD_TYPE=Debug
