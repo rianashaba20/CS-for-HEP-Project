@@ -22,27 +22,44 @@ ACCORDING TO THE PROJECT DESCRIPTION WE NOW HAVE TO CREATE THE DIRECTORY.
 exit								(To exit the root user)
 
 mkdir -p $HOME/containers/IMAPP25				(-p to also automatically create the containers directory
-
-
-
-NOW CREATE THE DOCKER INSTANCE WITH ALL THE REQUIRED PACKAGES AND DEPENDENCIES
-
-docker pull ubuntu
-
-
-docker run ubuntu /bin/bash -c "apt update; apt -y install g++ cmake libsfml-dev libtbb-dev"			(To install the packages and dependencies)
-
-
-docker ps -a													(Take the container ID of the most recent instance)
-
-
-docker commit <the ID you just copied without the brackets> imapp25_build
-
-
-docker images													(You should now see two images: ubuntu and imapp25_build)
-
-docker run -v $HOME/containers/IMAPP25/:/workspace -i -t imapp25_build /bin/bash			(This couples the IMAPP25 folder to a new workspace folder)
 ```
+No we create the first Docker file ```Dockerfile_build```:
+Go to ```cd containers/```, and then ```vim Dockerfile_build```.
+The content of the Docker file you should write is (To quit type: ```:wq```):
+```js
+FROM ubuntu:24.04
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt update && DEBIAN_FRONTEND=noninteractive apt install -y \
+		build-essential \
+		g++ \
+		cmake \
+		libsfml-dev \
+		libtbb-dev \
+		git \
+		vim \
+		&& rm -rf /var/lib/apt/lists/*
+WORKDIR /workspace
+CMD ["bash"]
+```
+And then:
+```
+sudo docker build -t imapp25_build .
+```
+To run the container in the ```/workspace```:
+```js
+sudo docker run -it \
+  -v $HOME/containers/IMAPP25:/workspace \
+  -w /workspace \
+  imapp25_build \
+  /bin/bash
+```
+You should see ```root@5dbb3732d428:/workspace#```.
+
+
+
+
+
+------------------
 
 Then, to get the output in **Build** mode, I tested it locally. I installed Docker, followed the same initial steps as in the beginning in the SSH connection to create the directory and the image. But I also had to install the Dockerfile from the SSH connection window at **Download File** button (here you have to insert your path: /home/<your username>/containers).  
 The commands I used after I connected to the VS Code were simply the following (BUILD MODE):
