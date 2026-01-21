@@ -70,7 +70,7 @@ sudo mv ~/main_parallel.cpp ~/containers/IMAPP25/
 ```
 Now we are ready to run the container:
 ```js
-docker run -v $HOME/containers/IMAPP25/:/workspace -w /workspace -i -t imapp25-dev /bin/bash
+docker run -v $HOME/containers/IMAPP25/:/workspace -w /workspace -i -t imapp25_build /bin/bash
 ```
 You should see: ```root@28b91510e2f3:/workspace#```
 Run the following commands for **BUILD MODE**:
