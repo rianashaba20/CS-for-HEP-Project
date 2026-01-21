@@ -1,0 +1,7 @@
+FROM ubuntu:24.04
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt update && DEBIAN_FRONTEND=noninteractive apt install -y \
+        libtbb12 \
+        libsfml-graphics2.6
+WORKDIR /workspace
+CMD ["bash"]
