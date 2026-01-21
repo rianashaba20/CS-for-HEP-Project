@@ -43,34 +43,7 @@ docker images													(You should now see two images: ubuntu and imapp25_bui
 
 docker run -v $HOME/containers/IMAPP25/:/workspace -i -t imapp25_build /bin/bash			(This couples the IMAPP25 folder to a new workspace folder)
 ```
-Next we need to create Dockerfile.
 
-For this, you need to exit the container, and go to the containers directory. Follow the steps below.
-
-```js
-cd containers/
-vim Dockerfile
-```
-Then, you have to write on the text file, simply copy and paste the following (To exit, write: ```:wq``` : 
-```js
-FROM ubuntu:24.04
-ENV DEBIAN_FRONTEND=noninteractive
-RUN apt update && DEBIAN_FRONTEND=noninteractive apt install -y \
-		build-essential \
-		g++ \
-		cmake \
-		libsfml-dev \
-		libtbb-dev \
-		git \
-		vim \
-		&& rm -rf /var/lib/apt/lists/*
-WORKDIR /workspace
-CMD ["bash"]
-```
-Inside the containers directory, build the image with the following command (name is imapp25-dev):
-```js
-sudo docker build -t imapp25-dev .
-```
 Then, to get the output in **Build** mode, I tested it locally. I installed Docker, followed the same initial steps as in the beginning in the SSH connection to create the directory and the image. But I also had to install the Dockerfile from the SSH connection window at **Download File** button (here you have to insert your path: /home/<your username>/containers).  
 The commands I used after I connected to the VS Code were simply the following (BUILD MODE):
 ```js
@@ -92,12 +65,12 @@ ls
 ```
 We need to upload our ```main_parallel.cpp``` and ```CMakelists.txt``` to the ```IMAPP25``` folder. For this one, just click on ```UPLOAD FILE``` button. The files will be in the home directory, and you can move them to where we want by following these commands:
 ```js
-mv ~/CMakeLists.txt ~/containers/IMAPP25/
-~/main_parallel.cpp ~/containers/IMAPP25/
+sudo mv ~/CMakeLists.txt ~/containers/IMAPP25/
+sudo mv ~/main_parallel.cpp ~/containers/IMAPP25/
 ```
 Now we are ready to run the container:
 ```js
-docker run -v $HOME/containers/IMAPP25/:/workspace -i -t imapp25-dev /bin/bash
+docker run -v $HOME/containers/IMAPP25/:/workspace -w /workspace -i -t imapp25-dev /bin/bash
 ```
 You should see: ```root@28b91510e2f3:/workspace#```
 Run the following commands for **BUILD MODE**:
