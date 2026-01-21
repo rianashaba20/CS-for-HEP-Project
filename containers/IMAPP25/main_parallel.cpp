@@ -3,7 +3,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include <tbb/tbb.h>
+#include <oneapi/tbb.h>
 #include <chrono>  // to measure time
 #include <atomic>  // to count tasks
 #include <fstream> // to create files
@@ -70,10 +70,10 @@ int main()
     // measure time needed to process the image 
     auto start = std::chrono::high_resolution_clock::now();
 
-    tbb::parallel_for(
-        tbb::blocked_range2d<int>(0, display_height, grain, 
+    oneapi::tbb::parallel_for(
+        oneapi::tbb::blocked_range2d<int>(0, display_height, grain, 
                                   0, display_width, grain),
-        [&](const tbb::blocked_range2d<int>& r){
+        [&](const oneapi::tbb::blocked_range2d<int>& r){
             exec_tasks++;   // count one task per each block
             
             // identify the top-left pixel of the block
@@ -82,10 +82,11 @@ int main()
 
             for(int row = r.rows().begin(); row != r.rows().end(); ++row){
                 for(int column = r.cols().begin(); column != r.cols().end(); ++column){
+                    bool top_side = (row == block_start_row && row != 0);
+                    bool left_side = (column == block_start_col && column != 0);
 
-                    // draw the grid lines: the top row and left column of each block
-                    if((row == block_start_row && row != 0) || (column == block_start_col && column !=0)){
-                      image.setPixel(column, row, sf::Color::White);
+                    if(top_side || left_side){
+                        image.setPixel(column, row, sf::Color::White);
                     } else {
                         auto k = mandelbrot(top_left + Complex{delta_x * column, delta_y * row});
                         image.setPixel(column, row, to_color(k));
@@ -93,7 +94,7 @@ int main()
                 }
             }
         },
-        tbb::simple_partitioner()
+        oneapi::tbb::simple_partitioner()
     );
 
     auto end = std::chrono::high_resolution_clock::now();
