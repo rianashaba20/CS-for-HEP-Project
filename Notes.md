@@ -52,18 +52,9 @@ sudo docker run -it \
   /bin/bash
 ```
 You should see ```root@5dbb3732d428:/workspace#```.
+You can then exit by just typing ```exit```.
 
-## Build Mode
-
-I tested it locally. I installed Docker, followed the same initial steps as in the beginning in the SSH connection to create the directory and the image. But I also had to install the Dockerfile from the SSH connection window at **Download File** button (here you have to insert your path: /home/<your username>/containers).  
-The commands I used after I connected to the VS Code were simply the following (BUILD MODE):
-```js
-cmake -S . -B build-d -DCMAKE_BUILD_TYPE=Debug
-cmake --build build-d
-./build-d/mandelbrot_par
-```
-## Working the same thing but on the VM SSH connection 
-First let's check our container:
+### First let's check our container:
 ```js
 docker ps			
 docker ps -a 
@@ -79,12 +70,12 @@ We need to upload our ```main_parallel.cpp``` and ```CMakelists.txt``` to the ``
 sudo mv ~/CMakeLists.txt ~/containers/IMAPP25/
 sudo mv ~/main_parallel.cpp ~/containers/IMAPP25/
 ```
-Now we are ready to run the container:
-```js
-docker run -v $HOME/containers/IMAPP25/:/workspace -w /workspace -i -t imapp25_build /bin/bash
-```
-You should see: ```root@28b91510e2f3:/workspace#```
-Run the following commands for **BUILD MODE**:
+
+## Build Mode
+
+I tested it locally. I installed Docker, followed the same initial steps as in the beginning in the SSH connection to create the directory and the image. But I also had to install the Dockerfile from the SSH connection window at **Download File** button (here you have to insert your path: /home/<your username>/containers).  
+
+Inside the container and ```/workspace``` type the commands (BUILD MODE):
 ```js
 cmake -S . -B build-d -DCMAKE_BUILD_TYPE=Debug
 cmake --build build-d
@@ -92,7 +83,8 @@ cmake --build build-d
 ```
 If you exit the container by just writing the command ```exit```, you can go back to the ```cd containers/IMAPP25```and then ```ls``` to check that the output is now there.
 
-### Release Mode
+
+## Release Mode
 Go inside the ```workspace``` in the container as before and simply run the following commands:
 ```js
 cmake -S . -B build-o -DCMAKE_BUILD_TYPE=Release
