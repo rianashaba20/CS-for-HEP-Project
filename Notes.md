@@ -92,7 +92,7 @@ After that we have to create a new Dockerfile for the release mode. Go to the ``
 cd containers/
 sudo vim Dockerfile_Release
 ```
-The content of the ```Docker_Release``` file you should write is:
+The content of the ```Docker_release``` file you should write is:
 ```js
 FROM ubuntu:24.04
 ENV DEBIAN_FRONTEND=noninteractive
@@ -109,7 +109,11 @@ sudo docker build -f Dockerfile_Release -t imapp25-release .
 Now we will run the new container ``ìmapp25-release``` and test the compiled program in it.
 To run the new container:
 ```js
-docker run -v $HOME/containers/IMAPP25:/workspace -i -t imapp25-release /bin/bash
+sudo docker run -it \
+  -v $HOME/containers/IMAPP25:/workspace \
+  -w /workspace \
+  imapp25-release \
+  /bin/bash
 ```
 Then run the ```mandelbrot_par``` executable in release mode (build-o):
 ```js
