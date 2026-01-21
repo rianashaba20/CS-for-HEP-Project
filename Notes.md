@@ -124,7 +124,7 @@ To check the output, stay inside the ```workspace``` and simply type ```ls -la``
 Now exit the container and go back to ```cd containers/IMAPP25```. We will download the files.
 First, make a zip file for the output with the following command:
 ```js
-tar -czf output_results.tar.gz * .png results.csv
+tar -czf output_results.tar.gz *.png results.csv
 tar -czf builds.tar.gz build-d build-o
 ```
 Then to download, simply click on ```DOWNLOAD FILE``` by entering the **full path** (which in my case)
