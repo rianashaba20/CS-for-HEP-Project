@@ -41,7 +41,7 @@ CMD ["bash"]
 ```
 And then:
 ```
-sudo docker build -t imapp25_build .
+sudo docker build -f Dockerfile_build -t imapp25_build .
 ```
 To run the container in the ```/workspace```:
 ```js
@@ -104,15 +104,15 @@ CMD ["bash"]
 ```
 Type ```:wq``` to write and quit. Then:
 ```js
-sudo docker build -f Dockerfile_Release -t imapp25-release .
+sudo docker build -f Dockerfile_release -t imapp25_release .
 ```
-Now we will run the new container ``ìmapp25-release``` and test the compiled program in it.
+Now we will run the new container ```ìmapp25_release``` and test the compiled program in it.
 To run the new container:
 ```js
 sudo docker run -it \
   -v $HOME/containers/IMAPP25:/workspace \
   -w /workspace \
-  imapp25-release \
+  imapp25_release \
   /bin/bash
 ```
 Then run the ```mandelbrot_par``` executable in release mode (build-o):
