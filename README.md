@@ -5,7 +5,7 @@ Project worked in pairs for the course of Computer Science for High Energy Physi
 ## Abstract
 The project description and all its details can be found in [Project Description](Description.md).  
 
-Additional helpful notes with step-by-step guidance can be found in [Notes](Notes.md)
+Additional helpful notes with step-by-step guidance can be found in [Notes](Notes.md).
 
 ## Content
 Everything is inside the [containers](containers) folder.
