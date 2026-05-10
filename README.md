@@ -3,7 +3,7 @@
 Project worked in pairs for the course of Computer Science for High Energy Physics during the third semester of IMAPP at University of Bologna. 
 
 ## Abstract
-The project description and all its details can be found in [Project Description](Project-Description.md).
+The project description and all its details can be found in [Project Description](https://github.com/rianashaba20/CS-for-HEP-Project/blob/main/Project%20Description.md).
 
 Additional helpful notes with step-by-step guidance can be found in [Notes](Notes.md).
 
